@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GameCard({ game }) {
+function GameCard({ game, onDelete }) {
     return (
         <li className='game-card'>
             <strong>{game.title}</strong> ({game.platform})<br />
@@ -12,7 +12,8 @@ function GameCard({ game }) {
             Review: {game.review} <br />
             Metascore: {game.metacritic} <br/>
             Genres: {game.genre}
+            <button onClick={onDelete}>Delete</button>
         </li>
-    )
+    );
 }
 export default GameCard;
