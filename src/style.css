@@ -1,0 +1,136 @@
+/* reset basic styles */
+body {
+    margin: 0;
+    padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4b1;
+    color:#333;
+}
+/* Center everything */
+body, html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem;
+    background-color: #453d3d2c;
+}
+
+h1 {
+    color: #453d3d;
+    margin-bottom: 1rem;
+    align-self: center;
+    border: 1px solid red;
+}
+
+form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    border: 1px solid red;
+}
+input[type="text"] {
+    padding:0.5rem;
+    border-radius:6px;
+    border: 1px solid #ccc;
+    min-width: 200px;
+}
+button {
+    padding: 0.5rem;
+    background-color: #537291;
+    color:white;
+    border:none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: margin-right 4s;
+}
+button:hover {
+    background-color: #255381
+}
+
+#game-list liGameTitle {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid red;
+
+}
+#game-list li .remove-button {
+    background-color: #e53935;
+    margin-right: 1rem;
+    float: right;
+}
+#game-list li .remove-button:hover {
+    background-color: #c62828;
+}
+#game-list li .details-button {
+    margin-left: 1rem;
+    background-color: green;
+}
+#game-list li .details-button:hover {
+    background-color: greenyellow;
+}
+
+#game-list li
+{
+    background-color: #22212154;
+    border-color: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+}
+#game-list li strong {
+    font-size: 1.2em;
+    color:#333;
+}
+#game-list li .review {
+    margin-top: 8px;
+    font-style: italic;
+    color:#555;
+}
+.modal {
+    position: fixed; /* stay in place */
+    z-index: 1;  /* sits on top */
+    left: 0;
+    top: 0;
+    width:100%;  /*full width */
+    height:100%;  /*full height */
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+    
+    background-color: #fefefe;
+    margin: 15% auto; /*15% from top and centred */
+    padding: 20px;
+    border:1px solid #888;
+    width: 80%;
+
+}
+#query-database #search-results {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding:1rem;
+    border: 2px dashed blue;
+}
+
+#query-database #search-results .game-result {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    border: 2px dashed red;
+}
