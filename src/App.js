@@ -52,7 +52,7 @@ function App() {
     <div className="App">
       <Header />
       <Nav onViewGames={toggleGameList} onQueryDatabase={toggleDatabase} />
-
+      {showGameList && <GameList games={games} setGames={setGames} />}
       {showDatabase && (
         <SearchDatabase
           searchResults={searchResults}
@@ -60,8 +60,6 @@ function App() {
           onAddGame={addGame}
         />
       )}
-
-      {showGameList && <GameList games={games} setGames={setGames} />}
     </div>
   );
 }

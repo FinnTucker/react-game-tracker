@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GameCard({ game, onDelete }) {
+function GameCard({ game, onDelete, showDetails }) {
     return (
         <li className='game-card'>
             <strong>{game.title}</strong> ({game.platform})<br />
@@ -13,6 +13,7 @@ function GameCard({ game, onDelete }) {
             Metascore: {game.metacritic} <br/>
             Genres: {game.genre}
             <button onClick={onDelete}>Delete</button>
+            <button onClick={showDetails}>Show Details</button>
         </li>
     );
 }
