@@ -2,9 +2,7 @@
 import { useEffect, useState } from 'react';
 import GameCard from './GameCard';
 
-function GameList() {
-  const [games, setGames] = useState([]);
-
+function GameList({ games = [], setGames, onShowDetails, onClose }) {
   useEffect(() => {
     const savedGames = localStorage.getItem("games");
     if (savedGames) {
@@ -27,17 +25,11 @@ function GameList() {
     );
   };
 
-  const showDetails = (game) => {
-    console.log("show details button clicked. opening game modal for game: %d", game.title);
-    <DetailsModal 
-      game={game}
-    />
-  }
-
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div id="game-list-section">
+      <span id='close' style={{cursor: 'pointer', float: 'right'}} onClick={onClose}>X</span>
       <h2>Search</h2>
       <input
         type="text"
@@ -52,8 +44,8 @@ function GameList() {
             key={index} 
             game={game} 
             onDelete={() => handleDelete(index)} 
-            // what is going on here?
-            showDetails{() => showDetails(game)} />
+            showDetails={() => onShowDetails(game)} // Use prop
+          />
         ))}
       </ul>
     </div>

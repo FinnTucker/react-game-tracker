@@ -5,12 +5,14 @@ import Header from './Components/Header';
 import Nav from './Components/Nav';
 import GameList from './Components/GameList';
 import SearchDatabase from './Components/SearchDatabase';
+import DetailsModal from './Components/DetailsModal';
 
 function App() {
   const [showDatabase, setShowDatabase] = useState(false);
   const [showGameList, setShowGameList] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [games, setGames] = useState([]);
+  const [selectedGame, setSelectedGame] = useState(null);
 
   const toggleDatabase = () => {
     setShowGameList(false);
@@ -21,6 +23,14 @@ function App() {
     setShowGameList(true);
     setShowDatabase(false);
   };
+
+  const handleShowDetails = (game) => {
+    setSelectedGame(game);
+  }
+
+  const handleCloseDetails = () => {
+    setSelectedGame(null);
+  }
 
   useEffect(() => {
     const saved = localStorage.getItem("games");
@@ -46,13 +56,20 @@ function App() {
     };
 
     setGames(prev => [...prev, newGame]);
+    alert(`${game.name} has been added to your game list!`);
   };
 
   return (
     <div className="App">
       <Header />
       <Nav onViewGames={toggleGameList} onQueryDatabase={toggleDatabase} />
-      {showGameList && <GameList games={games} setGames={setGames} />}
+      {showGameList && (
+        <GameList 
+          games={games} 
+          setGames={setGames} 
+          onShowDetails={handleShowDetails}
+        />
+      )}
       {showDatabase && (
         <SearchDatabase
           searchResults={searchResults}
@@ -60,6 +77,12 @@ function App() {
           onAddGame={addGame}
         />
       )}
+      {selectedGame && (
+        <DetailsModal game={selectedGame} onClose={handleCloseDetails} />
+      )}
+      <span id='close' style={{cursor: 'pointer', float: 'right'}} onClick={handleCloseDetails}>X</span>
+      {selectedGame && <img src={selectedGame.background_image} alt={selectedGame.title} width='300'/>}
+
     </div>
   );
 }
